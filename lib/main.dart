@@ -1,12 +1,12 @@
+import 'package:everything_app/components/my_textfield.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const LoginPage());
+  runApp(LoginPage());
 }
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,7 +17,10 @@ class LoginPage extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+  MyHomePage({super.key});
+  // text editing controllers
+  final usernameController = TextEditingController();
+  final passwordConttoller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,15 +52,21 @@ class MyHomePage extends StatelessWidget {
               const SizedBox(
                 height: 25,
               ),
-              const TextField(
-                decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              )
+
+              
+              MyTextField(
+                controller: usernameController,
+                hintText: 'Username',
+                obscureText: true,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              MyTextField(
+                controller: passwordConttoller,
+                hintText: 'Password',
+                obscureText: true,
+              ),
             ],
           ),
         ),
