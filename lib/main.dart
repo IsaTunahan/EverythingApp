@@ -2,8 +2,14 @@ import 'package:everything_app/components/my_button.dart';
 import 'package:everything_app/components/my_textfield.dart';
 import 'package:everything_app/components/square_tile.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+);
   runApp(LoginPage());
 }
 
@@ -39,16 +45,12 @@ class MyHomePage extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-              const Text('Merhaba'),
-              const Icon(
-                Icons.lock,
-                size: 100,
-              ),
+             Image.asset('lib/images/icon_flutter.png',height: 100,),
               const SizedBox(
                 height: 50,
               ),
               Text(
-                'Welcome back you\'ve been missed!',
+                'Welcome Back You\'ve Been Missed!',
                 style: TextStyle(
                   color: Colors.grey[700],
                   fontSize: 16,
@@ -113,7 +115,7 @@ class MyHomePage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: Text(
-                        'Or continuewith',
+                        'Or Continue With',
                         style: TextStyle(color: Colors.grey[700]),
                       ),
                     ),
