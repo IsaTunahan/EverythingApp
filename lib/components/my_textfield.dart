@@ -12,7 +12,7 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(25.0),
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
       child: TextField(
         controller: controller,
         obscureText: obscureText,
@@ -28,6 +28,7 @@ class MyTextField extends StatelessWidget {
           fillColor: Colors.grey[200],
           filled: true,
           hintText: hintText,
+          hintStyle: TextStyle(color: Colors.grey[500]),
         ),
       ),
     );

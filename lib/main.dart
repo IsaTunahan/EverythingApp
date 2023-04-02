@@ -1,4 +1,6 @@
+import 'package:everything_app/components/my_button.dart';
 import 'package:everything_app/components/my_textfield.dart';
+import 'package:everything_app/components/square_tile.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -21,6 +23,9 @@ class MyHomePage extends StatelessWidget {
   // text editing controllers
   final usernameController = TextEditingController();
   final passwordConttoller = TextEditingController();
+
+  //sign user in method
+  void signUserIn() {}
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +79,7 @@ class MyHomePage extends StatelessWidget {
 
               //forgot password
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:25.0),
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -89,6 +94,80 @@ class MyHomePage extends StatelessWidget {
                 height: 10,
               ),
               //sign in button
+              MyButton(
+                onTap: signUserIn,
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        'Or continuewith',
+                        style: TextStyle(color: Colors.grey[700]),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+
+              //google + apple logo
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+                  SquareTile(
+                    imagePath: 'lib/images/google.png',
+                  ),
+                  SizedBox(
+                    width: 25,
+                  ),
+                  SquareTile(
+                    imagePath: 'lib/images/apple.png',
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              //not a member? register
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                   Text(
+                    'Not a member?',
+                    style: TextStyle(color: Colors.grey[700]),
+                  ),
+                  const SizedBox(
+                    width: 4,
+                  ),
+                   const Text(
+                    'Register now',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
