@@ -1,179 +1,24 @@
-import 'package:everything_app/components/my_button.dart';
-import 'package:everything_app/components/my_textfield.dart';
-import 'package:everything_app/components/square_tile.dart';
+import 'package:everything_app/pages/auth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import '../firebase_options.dart';
+import 'pages/login_page.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
   options: DefaultFirebaseOptions.currentPlatform,
 );
-  runApp(LoginPage());
+  runApp(const MyApp());
 }
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key});
-  // text editing controllers
-  final usernameController = TextEditingController();
-  final passwordConttoller = TextEditingController();
-
-  //sign user in method
-  void signUserIn() {}
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[300],
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(
-                height: 50,
-              ),
-             Image.asset('lib/images/icon_flutter.png',height: 100,),
-              const SizedBox(
-                height: 50,
-              ),
-              Text(
-                'Welcome Back You\'ve Been Missed!',
-                style: TextStyle(
-                  color: Colors.grey[700],
-                  fontSize: 16,
-                ),
-              ),
-              const SizedBox(
-                height: 25,
-              ),
-
-              //username textfield
-              MyTextField(
-                controller: usernameController,
-                hintText: 'Username',
-                obscureText: true,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              //Password textfield
-              MyTextField(
-                controller: passwordConttoller,
-                hintText: 'Password',
-                obscureText: true,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-
-              //forgot password
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Forgot Password?',
-                      style: TextStyle(color: Colors.grey[600]),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              //sign in button
-              MyButton(
-                onTap: signUserIn,
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Text(
-                        'Or Continue With',
-                        style: TextStyle(color: Colors.grey[700]),
-                      ),
-                    ),
-                    Expanded(
-                      child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-
-              //google + apple logo
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  SquareTile(
-                    imagePath: 'lib/images/google.png',
-                  ),
-                  SizedBox(
-                    width: 25,
-                  ),
-                  SquareTile(
-                    imagePath: 'lib/images/apple.png',
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              //not a member? register
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                   Text(
-                    'Not a member?',
-                    style: TextStyle(color: Colors.grey[700]),
-                  ),
-                  const SizedBox(
-                    width: 4,
-                  ),
-                   const Text(
-                    'Register now',
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: AuthPage(),
     );
   }
 }
